@@ -12,34 +12,13 @@ const SignUp = () => {
           target='_self'
           className='flex flex-col items-start px-5 py-2 w-80 h-auto'
         >
-          <h1 className='text-orange-500 font-bold text-2xl mb-4'>
-            Cadastre-se
-          </h1>
-          <label className='text-orange-500 font-medium'>Name</label>
-          <input
-            type='text'
-            name='name'
-            autoComplete='off'
-            className='border rounded-lg border-white text-center w-full'
-            required
-          />
+          <h1 className='text-orange-500 font-bold text-2xl mb-4'>Login</h1>
           <label className='text-orange-500 font-medium'>Email</label>
           <input
             type='email'
             name='email'
             autoComplete='off'
-            className='border rounded-lg border-white text-center w-full'
-            required
-          />
-          <label className='text-orange-500 font-medium'>CPF</label>
-          <input
-            type='text'
-            name='CPF'
-            autoComplete='off'
-            className='border rounded-lg border-white text-center w-full'
-            minLength={11}
-            maxLength={11}
-            onChange={event => setCpf(event.target.value)}
+            className='border rounded-lg border-white text-center w-full my-1'
             required
           />
           <label className='text-orange-500 font-medium'>Password</label>
@@ -47,22 +26,22 @@ const SignUp = () => {
             type='password'
             name='password'
             autoComplete='off'
-            className='border rounded-lg border-white text-center w-full'
+            className='border rounded-lg border-white text-center w-full my-1'
             minLength={6}
             required
           />
 
           <input
             type='submit'
-            value='Cadastrar'
+            value='Logar'
             className='w-2/4 self-center bg-orange-500 rounded-3xl my-6 py-1
           text-white font-semibold'
           />
           <span className='border-b border-white w-full'></span>
         </form>
-        <Link to='/signin'>
+        <Link to='/signup'>
           <button className='self-center bg-orange-500 text-white mt-3 font-semibold w-auto px-5 py-1 rounded-3xl'>
-            Sign in
+            Sign up
           </button>
         </Link>
       </div>

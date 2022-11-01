@@ -29,9 +29,9 @@ const Genders = () => {
     enter: { scale: 1.5 },
     leave: { scale: 1 },
   })
-
+  // bg-gradient-to-br from-indigo-500  to-black
   return (
-    <div className='flex flex-col items-center w-full min-h-screen h-auto bg-white pb-10'>
+    <div className='flex flex-col items-center w-full min-h-screen h-auto bg-[conic-gradient(at_top_left,_var(--tw-gradient-stops))] from-gray-700 via-gray-900 to-black'>
       <div className='static flex flex-row w-full h-screen'>
         <aside className='flex bg-white items-center justify-center h-screen w-80'>
           <h1 className='font-bold text-9xl text-orange-500 drop-shadow-[-36px_41px_0_#8e3901] -rotate-90'>
