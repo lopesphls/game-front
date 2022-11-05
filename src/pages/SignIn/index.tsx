@@ -4,8 +4,8 @@ const SignUp = () => {
   const [cpf, setCpf] = useState('')
   console.log(cpf)
   return (
-    <div className='grid grid-flow-row grid-cols-2 items-center justify-center w-full h-screen px-5 bg-[conic-gradient(at_top_left,_var(--tw-gradient-stops))] from-gray-700 via-gray-900 to-black'>
-      <div className='flex flex-col items-center'>
+    <div className=' grid grid-flow-row grid-cols-2 items-center justify-center w-full h-screen px-5 bg-[conic-gradient(at_top_left,_var(--tw-gradient-stops))] from-gray-700 via-gray-900 to-black'>
+      <div className='flex flex-col items-center '>
         <form
           method='post'
           action='#'
@@ -48,4 +48,5 @@ const SignUp = () => {
     </div>
   )
 }
+
 export default SignUp

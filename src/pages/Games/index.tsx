@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
-import { AiFillStar } from 'react-icons/ai'
-import { useTransition } from 'react-spring'
+import { AiFillStar, AiOutlineStar } from 'react-icons/ai'
 import ApiGames from '../../service/apiGames'
 
 const apiGames = new ApiGames()
@@ -15,36 +14,24 @@ interface ApiConteudo {
   thumbnailUrl?: string
 }
 
-const Genders = () => {
+const Games = () => {
   const [produto, setProduto] = useState<ApiConteudo[]>([])
   const [photos, setPhotos] = useState<ApiConteudo[]>([])
+  const [fav, setFav] = useState(false)
 
   useEffect(() => {
     apiGames.getAll().then(response => setProduto(response.data))
     apiGames.getPhotos().then(response => setPhotos(response.data))
   }, [])
 
-  const transition = useTransition(produto, {
-    from: { scale: 1 },
-    enter: { scale: 1.5 },
-    leave: { scale: 1 },
-  })
   // bg-gradient-to-br from-indigo-500  to-black
   return (
     <div className='flex flex-col items-center w-full min-h-screen h-auto bg-[conic-gradient(at_top_left,_var(--tw-gradient-stops))] from-gray-700 via-gray-900 to-black'>
-      <div className='static flex flex-row w-full h-screen'>
-        <aside className='flex bg-white items-center justify-center h-screen w-80'>
-          <h1 className='font-bold text-9xl text-orange-500 drop-shadow-[-36px_41px_0_#8e3901] -rotate-90'>
-            {`Gêneros`}
-          </h1>
-        </aside>
-        <div className='w-full h-full bg-orange-500 rounded-br-[30%]'></div>
-      </div>
-      <div className='grid grid-cols-4 gap-4 justify-center items-center pt-14 max-xl:grid-cols-3 max-lg:grid-cols-2 max-md:grid-cols-1'>
+      <div className='grid grid-cols-4 gap-4 justify-center items-center pt-24 max-xl:grid-cols-3 max-lg:grid-cols-2 max-md:grid-cols-1'>
         {produto.map((el, index) => (
           <div
             key={el.id}
-            className='flex flex-col w-80 h-96 bg-purple-500  text-white rounded-2xl'
+            className='flex flex-col w-80 h-96 bg-indigo-500  text-white rounded-2xl all duration-500 hover:scale-[1.1]'
           >
             {photos[index]?.url && (
               <img
@@ -53,8 +40,15 @@ const Genders = () => {
                 className='bg-contain rounded-t-2xl h-52 w-full'
               />
             )}
-            <button className='self-end border bg-white -mt-5 mr-2 text-3xl p-2 rounded-full'>
-              {<AiFillStar className='text-orange-600' />}
+            <button
+              className='self-end border bg-white -mt-5 mr-2 text-3xl p-2 rounded-full'
+              onClick={() => setFav(!fav)}
+            >
+              {fav ? (
+                <AiFillStar className='animate__animated animate__bounceIn  text-orange-600' />
+              ) : (
+                <AiOutlineStar className='animate__animated animate__bounceIn  text-orange-500' />
+              )}
             </button>
 
             <h2 className='px-6 font-bold cap'>{el.title}</h2>
@@ -64,4 +58,4 @@ const Genders = () => {
     </div>
   )
 }
-export default Genders
+export default Games

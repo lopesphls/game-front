@@ -1,8 +1,5 @@
-import { useState } from 'react'
 import { Link } from 'react-router-dom'
 const SignUp = () => {
-  const [cpf, setCpf] = useState('')
-  console.log(cpf)
   return (
     <div className='grid grid-flow-row grid-cols-2 items-center justify-center w-full h-screen px-5 bg-[conic-gradient(at_top_left,_var(--tw-gradient-stops))] from-gray-700 via-gray-900 to-black'>
       <div className='flex flex-col items-center'>
@@ -39,7 +36,6 @@ const SignUp = () => {
             className='border rounded-lg border-white text-center w-full'
             minLength={11}
             maxLength={11}
-            onChange={event => setCpf(event.target.value)}
             required
           />
           <label className='text-orange-500 font-medium'>Password</label>
@@ -69,4 +65,5 @@ const SignUp = () => {
     </div>
   )
 }
+
 export default SignUp
