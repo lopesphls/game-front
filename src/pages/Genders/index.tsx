@@ -1,9 +1,4 @@
-import { useEffect, useState } from 'react'
-import { AiFillStar } from 'react-icons/ai'
-import { useTransition } from 'react-spring'
-import ApiGames from '../../service/apiGames'
-
-const apiGames = new ApiGames()
+import Produtos from '../../components/Produtos'
 
 interface ApiConteudo {
   albumId?: number
@@ -16,20 +11,6 @@ interface ApiConteudo {
 }
 
 const Genders = () => {
-  const [produto, setProduto] = useState<ApiConteudo[]>([])
-  const [photos, setPhotos] = useState<ApiConteudo[]>([])
-
-  useEffect(() => {
-    apiGames.getAll().then(response => setProduto(response.data))
-    apiGames.getPhotos().then(response => setPhotos(response.data))
-  }, [])
-
-  const transition = useTransition(produto, {
-    from: { scale: 1 },
-    enter: { scale: 1.5 },
-    leave: { scale: 1 },
-  })
-  // bg-gradient-to-br from-indigo-500  to-black
   return (
     <div className='flex flex-col items-center w-full min-h-screen h-auto bg-[conic-gradient(at_top_left,_var(--tw-gradient-stops))] from-gray-700 via-gray-900 to-black'>
       <div className='static flex flex-row w-full h-screen'>
@@ -41,25 +22,7 @@ const Genders = () => {
         <div className='w-full h-full bg-orange-500 rounded-br-[30%]'></div>
       </div>
       <div className='grid grid-cols-4 gap-4 justify-center items-center pt-14 max-xl:grid-cols-3 max-lg:grid-cols-2 max-md:grid-cols-1'>
-        {produto.map((el, index) => (
-          <div
-            key={el.id}
-            className='flex flex-col w-80 h-96 bg-purple-500  text-white rounded-2xl'
-          >
-            {photos[index]?.url && (
-              <img
-                src={photos[index].url}
-                alt={el.title}
-                className='bg-contain rounded-t-2xl h-52 w-full'
-              />
-            )}
-            <button className='self-end border bg-white -mt-5 mr-2 text-3xl p-2 rounded-full'>
-              {<AiFillStar className='text-orange-600' />}
-            </button>
-
-            <h2 className='px-6 font-bold cap'>{el.title}</h2>
-          </div>
-        ))}
+        <Produtos />
       </div>
     </div>
   )

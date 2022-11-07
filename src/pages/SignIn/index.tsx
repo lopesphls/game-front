@@ -1,13 +1,27 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { GetUser } from '../../entities/UserEntities'
+import accountService from '../../service/accountService'
 const SignUp = () => {
-  const [cpf, setCpf] = useState('')
-  console.log(cpf)
+  const [email, setEmail] = useState<string>('')
+  const [password, setPassword] = useState<string>('')
+
+  useEffect(() => {}, [])
+
+  const handleSubmit = value => {
+    value.preventDefault()
+    const currentCredential: GetUser = {
+      email,
+      password,
+    }
+    accountService.Authentication(currentCredential)
+  }
+
   return (
     <div className=' grid grid-flow-row grid-cols-2 items-center justify-center w-full h-screen px-5 bg-[conic-gradient(at_top_left,_var(--tw-gradient-stops))] from-gray-700 via-gray-900 to-black'>
       <div className='flex flex-col items-center '>
         <form
-          method='post'
+          onSubmit={value => handleSubmit(value)}
           action='#'
           target='_self'
           className='flex flex-col items-start px-5 py-2 w-80 h-auto'
@@ -18,6 +32,7 @@ const SignUp = () => {
             type='email'
             name='email'
             autoComplete='off'
+            onChange={e => setEmail(e.target.value)}
             className='border rounded-lg border-white text-center w-full my-1'
             required
           />
@@ -28,6 +43,7 @@ const SignUp = () => {
             autoComplete='off'
             className='border rounded-lg border-white text-center w-full my-1'
             minLength={6}
+            onChange={e => setPassword(e.target.value)}
             required
           />
 

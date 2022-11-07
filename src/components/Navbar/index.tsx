@@ -21,12 +21,12 @@ const Navbar = () => {
       )
 
       setJogos(
-        'flex flex-row items-center justify-center w-6/12 h-full font-bold duration-100 text-xl active:border-b-4 border-b-4',
+        'flex flex-row items-center justify-center w-6/12 h-full font-bold duration-300 text-xl active:border-b-4 border-b-4',
       )
     } else {
       setNavbar('hidden')
       setJogos(
-        'flex items-center justify-center w-6/12 h-full font-bold  text-xl duration-100 active:border-b-4 hover:border-b-4',
+        'flex items-center justify-center w-6/12 h-full font-bold  text-xl duration-300 active:border-b-4 hover:border-b-4',
       )
     }
   }, [active])
@@ -44,7 +44,7 @@ const Navbar = () => {
         <div className='flex h-full w-4/12'>
           <Link
             to='/'
-            className='flex items-center justify-center w-6/12 h-full text-4xl duration-100 hover:border-b-4 active:border-b-4'
+            className='flex items-center justify-center w-6/12 h-full text-4xl duration-300 hover:border-b-4 active:border-b-4'
             onMouseEnter={() => setActive(false)}
           >
             <button>{<MdHome />}</button>
@@ -55,7 +55,7 @@ const Navbar = () => {
           </button>
           <Link
             to='/search'
-            className='flex items-center justify-center w-6/12 h-full text-4xl duration-100 hover:border-b-4 active:border-b-4'
+            className='flex items-center justify-center w-6/12 h-full text-4xl duration-300 hover:border-b-4 active:border-b-4'
             onMouseEnter={() => setActive(false)}
           >
             <button>{<MdSearch />}</button>
@@ -70,7 +70,7 @@ const Navbar = () => {
       <div className={navbar} onMouseLeave={() => setActive(false)}>
         <Link
           to='/games'
-          className='text-white duration-100 hover:border-b-4 text-xl'
+          className='text-white duration-300 hover:border-b-4 text-xl'
         >
           Todos
         </Link>
